@@ -1,0 +1,96 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>客户管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/easyui/themes/default/easyui.css">   
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/easyui/themes/icon.css">   
+<script type="text/javascript" src="__PUBLIC__/easyui/jquery.min.js"></script>   
+<script type="text/javascript" src="__PUBLIC__/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/index.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index.css">
+</head>
+<body class="easyui-layout layout_index">
+     <script type="text/javascript">
+        $(function () {
+            $('.side li a').click(function(){
+                var url = $(this).attr('cmshref');
+                var classId = 'index';
+                var subtitle = $(this).text();
+                var rel = $(this).attr('rel');
+                if (rel == 'dialog') {
+                    $('#dialog_cms').dialog({    
+                        title: 'My Dialog',    
+                        width: 580,    
+                        height: 360,    
+                        closed: false,    
+                        cache: false,    
+                        href: url,    
+                        modal: true.constructor,
+                        buttons: [{
+                                text: '保存',
+                                iconCls: 'icon-ok',
+                                handler: function () {
+                                    //alert(classId);
+									
+									var href=$('.ff').attr('thref');
+                                    submitForm(href); //调用更新操作
+                                }
+                            }, {
+                                text: '取消',
+                                iconCls: 'icon-cancel',
+                                handler: function () {
+                                    dialogOnClose();
+                                }
+                            }
+                        ]
+                    });
+                    return false;
+                }
+                if (!$('#tabs_' + classId).tabs('exists', subtitle)) {
+                    $('#tabs_' + classId).tabs('add', {
+                        title: subtitle,
+                        content: subtitle,
+                        closable: true,
+                        href: url,
+                        tools: [{
+                                iconCls: 'icon-mini-refresh',
+                                handler: function () {
+                                    updateTab(classId, url, subtitle);
+                                }
+                            }]
+                    });
+                    return false;
+                } else {
+                    $('#tabs_' + classId).tabs('select', subtitle);
+                    return false;
+                }
+            });
+        });
+    </script>
+    <div data-options="region:'north',split:true" style="height:100px;">
+        <div class="logo" style="float:left;"><image src="__PUBLIC__/images/logo1.jpg" /></div>
+        <div style="float:right;">
+            <include file="top" />
+
+        </div>
+    </div> 
+    <div data-options="region:'west',title:'菜单栏',split:true" style="width:200px;">
+        <div class="easyui-accordion side" data-options="multiple:true">
+            <!--//左侧菜单导航-->
+            <include file="left" />
+            <!--//左侧菜单导航-->
+        </div><!--accordion-->
+    </div>   
+    <div data-options="region:'center',title:'内容管理系统'" style="padding:5px;background:#eee;">
+         <div id="tabs_index" class="easyui-tabs"  fit="true" border="false">
+            
+
+        </div>
+    </div>
+    <div id="dialog_cms" data-options="iconCls:'icon-save'">
+    </div>
+    
+</body>	
+
+</html>

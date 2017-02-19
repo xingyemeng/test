@@ -1,0 +1,24 @@
+if(!isset($_SESSION['id'])&&$_SESSION['username']=''){
+			//echo(11111111111);
+			$this->error("请先登录！",U('login/index'));
+			//$this->display();
+		}else{
+			//echo ($_SESSION['username']);			
+			//$this->error("请先登录！",U('login/index'));
+			$this->display();
+		}        
+
+
+
+if(!isset($_SESSION['id'])&&$_SESSION['username']!=''){
+			//echo(11111111111);
+			//$this->error("请先登录！",U('login/index'));
+			$this->display();
+		}else{
+			//echo ($_SESSION['username']);			
+			$this->error("请先登录！",U('login/index'));
+			//$this->display();
+		}        
+
+
+以上两种写法有什么区别？？？？第一种会造成退出后再后退一步，还能显示登陆状态，刷新也没用

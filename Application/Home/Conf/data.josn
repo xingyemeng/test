@@ -1,0 +1,6 @@
+
+[
+    { "code":"PHP" , "name":"新手学PHP","price":"$12"},
+    { "code":"Java" , "name":"新手学Java","price":"$18"},
+    { "code":"Python" , "name":"新手学Python","price":"$16"}
+]

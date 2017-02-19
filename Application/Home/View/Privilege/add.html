@@ -1,0 +1,47 @@
+<form class="ff" action='{:U("Privilege/doadd")}' method="post">
+	<div class='content'>
+        <table>
+            <tbody>
+                <tr>
+                    <th>上级权限：</th>
+                    <td>
+                        <select name='id'>  
+							<volist name="list" id="vo">
+								<option value ="<?php echo $vo['id']; ?>"><for start="0" end="$vo['level']">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</for>|----{$vo.pri_name}</option>
+								if({$vo.children}){
+									<volist name="vo.children" id="lst" >
+										<option value ="<?php echo $lst['id']; ?>"><for start="0" end="$lst['level']">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</for>|----{$lst.pri_name}</option>
+									</volist>
+								}
+							</volist> 
+						</select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>权限名：</th>
+                    <td>
+                        <input type='text' name='pri_name' value='' />
+                    </td>
+                </tr>
+				<tr>
+                    <th>模块名：</th>
+                    <td>
+                        <input type='text' name='mname' value='' />
+                    </td>
+                </tr>
+				<tr>
+                    <th>控制器名：</th>
+                    <td>
+                        <input type='text' name='cname' value='' />
+                    </td>
+                </tr>
+				<tr>
+                    <th>方法名：</th>
+                    <td>
+                        <input type='text' name='aname' value='' />
+                    </td>
+                </tr>
+            </tbody>
+        </table>   
+    </div>
+</form>

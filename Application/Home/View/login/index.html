@@ -1,0 +1,33 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<link href="__PUBLIC__/css/style.css" rel="stylesheet" type="text/css"> 
+<script src="__PUBLIC__/Js/jquery.js"></script>
+<script>
+	$(function(){
+		$('button').bind('click',function(){
+			$.get('__URL__/getajax',function(data){
+				alert(data);
+			});
+		});
+		$('img[class="login"]').bind('click',function(){
+			$('form[name="myform"]').submit();
+		});
+		$('img[class="register"]').click(function(){
+			window.location="__APP__/home/Register/index";
+		});
+	});
+</script>
+</head>
+
+<body>
+	<form action="__URL__/dologin" method="post" name="myform">
+		用户名：<input type="text" name="username"></input></br>
+		密　码：<input type="password" name="password"></input></br>
+		验证码：<input type="text" name="code"></input><img src="__URL__/Verify" onclick="this.src=this.src+'?'+Math.random()" /></br>
+		<img class="login" src='__PUBLIC__/images/b05.gif' /><img class="register" src='__PUBLIC__/images/b04.gif' />
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+*{padding:0;margin:0;}
+
+form{margin:0 auto;width:350px;margin-top:50px;height:400px;overflow:hidden;}
+form input{margin:20px 20px 0 20px;height:30px;position:relative;right:6px;}
+form .register,.reset{margin:20px 0 0 50px;cursor:pointer;}
+form img{position:relative;top:10px;}
+form .sex{position:relative;top:10px;}
+
+

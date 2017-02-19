@@ -1,0 +1,50 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<link href="__PUBLIC__/css/reg.css" rel="stylesheet" type="text/css"> 
+<script src="__PUBLIC__/Js/jquery.js"></script>
+<script>
+	$(function(){
+		var error = new Array();
+		$('input[class="uname"]').blur(function(){			
+			var username=$(this).val();
+			$.get('__URL__/checkname',{'username':username},function(data){
+					if(data=="不允许"){
+						error['username']=1;
+						$('input[class="uname"]').after('<p id="umessage" style="color:red;">用户名已存在</p>');
+						$('input[class="uname"]').focus(function(){
+							$('#umessage').remove();
+						});
+					}else{
+						error['username']=0;
+						$('#umessage').remove();
+					}
+				});			
+		});
+		$("img.register").click(function(){
+			if(error['username']==0){
+				$('form[name="myform"]').submit();
+			}else{
+				return false;
+			}	
+		});
+		$('img[class="reset"]').click(function(){
+			$('input').val('');
+		});
+	});
+</script>
+</head>
+
+<body>
+	<form action="__URL__/doReg" method="post" name="myform">
+		用 户 名&nbsp;<input type="text" name="username" class="uname"></input></br>
+		密　　码<input type="password" name="password"></input></br>
+		确认密码<input type="password" name="repassword"></input></br>
+		性　　别<input type="radio" name="sex" class="sex" value="1">男</input><input type="radio" class="sex" name="sex" value="0">女</input></br>
+		验 证 码&nbsp;<input type="text" name="code"></input><img src="__APP__/home/login/Verify" onclick="this.src=this.src+'?'+Math.random()" /></br>
+		<img class="register" src='__PUBLIC__/images/b02.gif' /><img class="reset" src='__PUBLIC__/images/b03.gif' />
+	</form>
+</body>
+
+</html>

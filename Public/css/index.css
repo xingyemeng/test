@@ -1,0 +1,24 @@
+/*????????*/
+*{padding:0;margin:0;}
+p{margin:60px 40px 0 0;}
+.content table{
+    padding: 5px;
+    margin: 15px;
+}
+.content th{
+    text-align:right;
+    background:#e5e5e5 none repeat scroll 0 0;
+    width: 120px;
+    padding:5px;
+}
+.content td{
+    border-bottom: 1px solid #e2e8eb;
+    border-right: 1px solid #e2e8eb;
+    padding: 5px;
+    width: 380px;
+}
+.content input{
+    height:25px;
+    width: 200px;
+}
+

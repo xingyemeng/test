@@ -1,0 +1,8 @@
+/*全局样式*/
+*{padding:0;margin:0;}
+
+
+form{margin:0 auto;width:350px;margin-top:50px;height:260px;overflow:hidden;}
+form input{margin-top:20px;height:30px;}
+form .login,.register,.reset{margin:20px 0 0 50px;cursor:pointer;}
+form img{position:relative;top:10px;}
